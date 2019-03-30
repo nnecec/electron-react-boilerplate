@@ -17,21 +17,21 @@
     "publish": null
   },
   "scripts": {
-    "build": "webpack --config build/webpack.config.dev.js",
     "dev:electron": "cross-env NODE_ENV=development electron -r @babel/register ./src/background.js",
+    "e2e": "mocha temp/e2e.js --require source-map-support/register",
     "postinstall": "electron-builder install-app-deps",
     "preunit": "webpack --config=build/webpack.unit.config.js --env=test --display=none",
-    "unit": "electron-mocha temp/specs.js --renderer --require source-map-support/register",
     "pree2e": "webpack --config=build/webpack.config.prod.js --env=test --display=none && webpack --config=build/webpack.e2e.config.js --env=test --display=none",
-    "e2e": "mocha temp/e2e.js --require source-map-support/register",
-    "test": "npm run unit && npm run e2e",
+    "release": "npm test && webpack --config=build/webpack.config.prod.js --env=production && electron-builder",
     "start": "node build/start.js",
-    "release": "npm test && webpack --config=build/webpack.config.prod.js --env=production && electron-builder"
+    "test": "npm run unit && npm run e2e",
+    "unit": "electron-mocha temp/specs.js --renderer --require source-map-support/register"
   },
   "dependencies": {
     "fs-jetpack": "^2.2.2",
     "react": "^16.8.6",
-    "react-dom": "^16.8.6"
+    "react-dom": "^16.8.6",
+    "react-router-dom": "^5.0.0"
   },
   "devDependencies": {
     "@babel/core": "^7.4.0",

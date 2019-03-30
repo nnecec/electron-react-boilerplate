@@ -14,7 +14,6 @@ module.exports = env => {
       path.resolve(__dirname, '../src/index.js')
     ],
     output: {
-      // publicPath: serverConfig.publicPath,
       filename: '[name].js',
       path: path.resolve(__dirname, '../dist')
     },

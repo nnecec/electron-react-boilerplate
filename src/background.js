@@ -6,9 +6,9 @@
 import path from 'path'
 import url from 'url'
 import { app, Menu } from 'electron'
-import { devMenuTemplate } from './menu/dev_menu_template'
-import { editMenuTemplate } from './menu/edit_menu_template'
-import createWindow from './helpers/window'
+import { devMenu } from './menu/dev'
+import { editMenu } from './menu/edit'
+import createWindow from './utils/createWindow'
 import { serverConfig } from '../config'
 
 // Special module holding environment variables which you declared
@@ -16,9 +16,9 @@ import { serverConfig } from '../config'
 const NODE_ENV = process.env.NODE_ENV || 'development'
 
 const setApplicationMenu = () => {
-  const menus = [editMenuTemplate]
+  const menus = [editMenu]
   if (NODE_ENV !== 'production') {
-    menus.push(devMenuTemplate)
+    menus.push(devMenu)
   }
   Menu.setApplicationMenu(Menu.buildFromTemplate(menus))
 }

@@ -12,7 +12,7 @@ const compiler = webpack(devConfig(env))
 const config = {
   port: serverConfig.port,
   hot: true,
-  contentBase: path.join(__dirname, './app'),
+  contentBase: path.join(__dirname, '../dist'),
   watchOptions: {
     poll: true,
     ignored: /node_modules/
