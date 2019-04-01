@@ -6,6 +6,7 @@ const { serverConfig } = require('../config')
 
 module.exports = env => {
   return merge.smart(base(env), {
+    mode: 'development',
     devtool: 'inline-source-map',
     entry: [
       'react-hot-loader/patch',

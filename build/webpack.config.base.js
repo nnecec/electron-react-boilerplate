@@ -4,17 +4,10 @@ const HTMLWebpackPlugin = require('html-webpack-plugin')
 const webpack = require('webpack')
 const { dependencies } = require('../package.json')
 
-const translateEnvToMode = (env) => {
-  if (env === 'production') {
-    return 'production'
-  }
-  return 'development'
-}
-
 module.exports = env => {
   return {
     target: 'electron-renderer',
-    mode: translateEnvToMode(env),
+
     node: {
       __dirname: false,
       __filename: false
