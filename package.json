@@ -17,6 +17,7 @@
     "publish": null
   },
   "scripts": {
+    "dev:electron": "cross-env NODE_ENV=development electron -r @babel/register ./src/background.js",
     "e2e": "mocha temp/e2e.js --require source-map-support/register",
     "postinstall": "electron-builder install-app-deps",
     "preunit": "webpack --config=build/webpack.unit.config.js --env=test --display=none",
