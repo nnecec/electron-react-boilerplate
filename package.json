@@ -7,7 +7,7 @@
   "build": {
     "appId": "com.example.electron-react-boilerplate",
     "files": [
-      "app/**/*",
+      "dist/**/*",
       "node_modules/**/*",
       "package.json"
     ],
@@ -22,7 +22,7 @@
     "postinstall": "electron-builder install-app-deps",
     "preunit": "webpack --config=build/webpack.unit.config.js --env=test --display=none",
     "pree2e": "webpack --config=build/webpack.config.prod.js --env=test --display=none && webpack --config=build/webpack.e2e.config.js --env=test --display=none",
-    "release": "npm test && webpack --config=build/webpack.config.prod.js --env=production && electron-builder",
+    "release": "cross-env NODE_ENV=production webpack --config=build/webpack.config.prod.js && electron-builder",
     "start": "node build/start.js",
     "test": "npm run unit && npm run e2e",
     "unit": "electron-mocha temp/specs.js --renderer --require source-map-support/register"
